@@ -10,7 +10,7 @@ class GetService {
     try {
       QuerySnapshot querySnapshot = await _firestore
           .collection('DOCUMENTS')
-          .orderBy(FieldPath.documentId,
+          .orderBy('doc_date',
               descending: false) // Sort by document ID in ascending order
           .get();
 

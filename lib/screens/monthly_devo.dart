@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:newlifedevotional/model/doc_model.dart';
 import 'package:newlifedevotional/screens/reader_screen.dart';
 import 'package:newlifedevotional/service/firbase/get_by_month.dart';
@@ -18,7 +19,8 @@ class _MonthlyDevotionalPageState extends State<MonthlyDevotionalPage> {
 
   final GetMonthlyService getService = GetMonthlyService();
   late Future<List<Documents>> documentsFuture;
-
+  DateTime now = DateTime.now();
+  // Output: December 2023
   @override
   void initState() {
     super.initState();
@@ -27,9 +29,11 @@ class _MonthlyDevotionalPageState extends State<MonthlyDevotionalPage> {
 
   @override
   Widget build(BuildContext context) {
+    String formattedDate = DateFormat.yMMMM().format(now);
     return Container(
       child: Scaffold(
         appBar: AppBar(
+          title: Text(formattedDate),
           backgroundColor: Colors.black,
           leading: IconButton(
             onPressed: () {},
@@ -64,7 +68,7 @@ class _MonthlyDevotionalPageState extends State<MonthlyDevotionalPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'This Month Devotionals',
+                          formattedDate,
                           style: GoogleFonts.roboto(
                               fontSize: 28,
                               fontWeight: FontWeight.bold,

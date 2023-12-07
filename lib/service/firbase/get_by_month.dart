@@ -14,9 +14,8 @@ class GetMonthlyService {
 
       QuerySnapshot querySnapshot = await _firestore
           .collection('DOCUMENTS')
-          .where('month_year', isGreaterThanOrEqualTo: formattedDate)
-          //.where('doc_date', isLessThanOrEqualTo: endOfMonth)
-          .orderBy(FieldPath.documentId,
+          .where('month_year', isEqualTo: formattedDate)
+          .orderBy('doc_date',
               descending: false) // Sort by document ID in ascending order
           .get();
 
